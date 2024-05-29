@@ -9,12 +9,19 @@ export default function TextForm(props) {
     setText(newText);
   }
 
+  const handlelowclick = () => {
+   
+    let newText = text.toLowerCase();
+    
+    setText(newText);
+  }
+
   const handleOnChange = (event) => {
     console.log("change")
     setText(event.target.value)
     
   }
-  const [text, setText] = useState("Enter Text here")
+  const [text, setText] = useState(" ")
 
   return (
     <div>
@@ -30,6 +37,19 @@ export default function TextForm(props) {
         <button className="btn btn-primary my-3" onClick={handleUpclick}>
           Convert to uppercase
         </button>
+        <button className="btn btn-primary my-3 mx-2" onClick={handlelowclick}>
+          Convert to Lowercase
+        </button>
+      </div>
+      <div className="container">
+      <h1>Your Text Summery</h1>
+      <p> {text.split(" ").length} words and {text.length} character</p>
+      <p> {0.008 * text.split(" ").length} Minutes to read</p>
+
+      <h1>Preview</h1>
+
+      <p>{text}</p>
+      
       </div>
     </div>
   );
