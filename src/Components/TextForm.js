@@ -1,4 +1,6 @@
-import React, {useState} from "react"
+import React, {useState } from "react"
+
+
 
 export default function TextForm(props) {
 
@@ -26,7 +28,7 @@ export default function TextForm(props) {
     setText(newText);
 
     props.showalert("success", "Converted to Lowercase ")
-    
+
     document.title= "React app- lowercase"
   }
 

@@ -6,6 +6,9 @@ import About from "./Components/About";
 import { useState } from "react";
 import Alert from "./Components/Alert";
 
+
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+
 function App() {
   const [alert, setalert] = useState(null);
   const [mode, setmode] = useState("light");
@@ -19,12 +22,10 @@ function App() {
       settextm("Enable Light Mode");
       showalert("success", "Dark mode is enable");
       document.title = "React app- Dark-mode";
-      
-setInterval(()=>{
-  document.title="plz download"
-}, 2000)
 
-
+      setInterval(() => {
+        document.title = "plz download";
+      }, 2000);
     } else {
       setmode("light");
       document.body.style.backgroundColor = "white";
@@ -48,6 +49,7 @@ setInterval(()=>{
 
   return (
     <>
+    <BrowserRouter>
       <Navbar
         title="Textutils"
         mode={mode}
@@ -58,10 +60,19 @@ setInterval(()=>{
       <Alert alert={alert} />
 
       <div className="container my-3">
-        <TextForm showalert={showalert} heading="Enter text" />
-
-        {/* <About></About> */}
+     
+        
+          <Routes>
+            <Route
+              exact path="/"
+              element={<TextForm showalert={showalert} heading="Enter text" />}
+            />
+            <Route exact path="/about" element={<About />} />
+          </Routes>
+        
+        
       </div>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,57 +1,41 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function About() {
+  const [myStyle, setMyStyle] = useState({
+    color: "black",
+    backgroundColor: "white",
+    border: "2px black solid",
+  });
 
-  const[myStyle, setMyStyle]= useState(
-     {
-      color: 'black',
-      backgroundColor:'white',
-      border: '2px black solid'
-    })
-
-    const [btntext, setbtntext]= useState(
-      "Enable dark mode"
-)
-const Changeclr=()=>{
-  
-
-if(myStyle.color =='black'){
-  console.log("if")
-  setMyStyle(
-    {
-      color: 'white',
-      backgroundColor:'black',
-      border: '2px white solid'
+  const [btntext, setbtntext] = useState("Enable dark mode");
+  const Changeclr = () => {
+    if (myStyle.color == "black") {
+      console.log("if");
+      setMyStyle({
+        color: "white",
+        backgroundColor: "black",
+        border: "2px white solid",
+      });
+      setbtntext("Enable light mode");
+    } else {
+      setMyStyle({
+        color: "black",
+        backgroundColor: "white",
+        border: "2px black solid",
+      });
+      setbtntext("Enable dark mode");
     }
-
-  )
-  setbtntext("Enable light mode");
-}
-  
-else {
-  setMyStyle(
-    {
-      color: 'black',
-      backgroundColor:'white',
-      border: '2px black solid'
-    }
-
-  )
-  setbtntext("Enable dark mode");
-}
-
-  
-}
-
-
+  };
 
   return (
-    <div className="container my-3" style={myStyle} >
-      <h1 className="my-3">About us</h1>
-      <div className="accordion accordion-flush" id="accordionFlushExample"  >
+    <div className="container my-3" style={myStyle}>
+      <a className="my-3" to="/about">
+        About us
+      </a>
+      <div className="accordion accordion-flush" id="accordionFlushExample">
         <div className="accordion-item">
-          <h2 className="accordion-header" id="flush-headingOne" >
-
+          <h2 className="accordion-header" id="flush-headingOne">
             <button
               className="accordion-button collapsed"
               type="button"
@@ -70,14 +54,14 @@ else {
             aria-labelledby="flush-headingOne"
             data-bs-parent="#accordionFlushExample"
           >
-            <div className="accordion-body" style={myStyle} >
+            <div className="accordion-body" style={myStyle}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               first item's accordion body.
             </div>
           </div>
         </div>
-        <div className="accordion-item " >
+        <div className="accordion-item ">
           <h2 className="accordion-header" id="flush-headingTwo">
             <button
               className="accordion-button collapsed"
@@ -137,8 +121,12 @@ else {
         </div>
       </div>
       <div className="container">
-        <button type="button" className="btn btn-primary my-3" onClick={Changeclr}>
-         {btntext}
+        <button
+          type="button"
+          className="btn btn-primary my-3"
+          onClick={Changeclr}
+        >
+          {btntext}
         </button>
       </div>
     </div>
