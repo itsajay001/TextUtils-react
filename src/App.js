@@ -2,36 +2,55 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
-import About from "./Components/About"
+import About from "./Components/About";
 import { useState } from "react";
+import Alert from "./Components/Alert";
 
 function App() {
-  const[mode, setmode]=useState("light");
-  const[textm, settextm]=useState("Enable Dark Mode");
+  const [alert, setalert] = useState(null);
+  const [mode, setmode] = useState("light");
+  const [textm, settextm] = useState("Enable Dark Mode");
 
-  const togglemode = ()=>{
-    if(mode==="light"){
+  const togglemode = () => {
+    if (mode === "light") {
       setmode("dark");
-      document.body.style.backgroundColor= "#141647"
-      document.body.style.color="white"
-      settextm("Enable Light Mode")
-    }
-    else{
+      document.body.style.backgroundColor = "#141647";
+      document.body.style.color = "white";
+      settextm("Enable Light Mode");
+      showalert("success", "Dark mode is enable");
+    } else {
       setmode("light");
-      document.body.style.backgroundColor="white"
-      document.body.style.color="black"
-      settextm("Enable Dark Mode")
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      settextm("Enable Dark Mode");
+      showalert("success", "Light mode is enable");
     }
+  };
 
-  }
+  const showalert = (type, message) => {
+    setalert({
+      type: type,
+      msg: message,
+    });
+
+    setTimeout(()=>{
+      setalert(null);
+    }, 1500)
+  };
 
   return (
     <>
-      <Navbar title="Textutils" mode={mode} togglemode={togglemode}  textm={textm}  />
+      <Navbar
+        title="Textutils"
+        mode={mode}
+        togglemode={togglemode}
+        textm={textm}
+      />
+
+      <Alert alert={alert} />
 
       <div className="container my-3">
-
-        <TextForm heading="Enter text"  />
+        <TextForm showalert={showalert} heading="Enter text" />
 
         {/* <About></About> */}
       </div>
@@ -40,4 +59,3 @@ function App() {
 }
 
 export default App;
-
