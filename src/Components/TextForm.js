@@ -24,15 +24,16 @@ export default function TextForm(props) {
   const [text, setText] = useState(" ")
 
   return (
-    <div>
-      <h1>{props.heading}</h1>
-      <div className="mb-3">
+    <div className="container"  style={{color: props.mode==='dark'? 'light': 'dark'}} >
+      <h1 >{props.heading}</h1>
+      <div className="mb-3" >
         <textarea
           className="form-control"
           id="myBox"
           rows="8"
           value={text}
           onChange={handleOnChange}
+          
         ></textarea>
         <button className="btn btn-primary my-3" onClick={handleUpclick}>
           Convert to uppercase
