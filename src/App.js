@@ -18,12 +18,20 @@ function App() {
       document.body.style.color = "white";
       settextm("Enable Light Mode");
       showalert("success", "Dark mode is enable");
+      document.title = "React app- Dark-mode";
+      
+setInterval(()=>{
+  document.title="plz download"
+}, 2000)
+
+
     } else {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       settextm("Enable Dark Mode");
       showalert("success", "Light mode is enable");
+      document.title = "React app- light-mode";
     }
   };
 
@@ -33,9 +41,9 @@ function App() {
       msg: message,
     });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setalert(null);
-    }, 1500)
+    }, 1500);
   };
 
   return (

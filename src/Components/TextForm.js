@@ -15,6 +15,8 @@ export default function TextForm(props) {
     setText(newText);
     
     props.showalert("success", "Converted to uppercase ")
+
+    document.title= "React app- Uppercase"
   }
 
   const handlelowclick = () => {
@@ -24,6 +26,8 @@ export default function TextForm(props) {
     setText(newText);
 
     props.showalert("success", "Converted to Lowercase ")
+    
+    document.title= "React app- lowercase"
   }
 
   const handleOnChange = (event) => {
