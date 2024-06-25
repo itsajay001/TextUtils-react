@@ -1,6 +1,12 @@
 import React, {useState} from "react"
 
 export default function TextForm(props) {
+
+  const handlecopy= ()=>{
+    var text = document.getElementById("myBox")
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  }
   
   const handleUpclick = () => {
    
@@ -41,6 +47,9 @@ export default function TextForm(props) {
         <button className="btn btn-primary my-3 mx-2" onClick={handlelowclick}>
           Convert to Lowercase
         </button>
+        <button className="btn btn-primary my-3 mx-2" onClick={handlecopy}>
+          Copy Text
+        </button>
       </div>
       <div className="container">
       <h1>Your Text Summery</h1>
@@ -49,9 +58,9 @@ export default function TextForm(props) {
 
       <h1>Preview</h1>
 
-      <p>{text}</p>
+      <p>{text.length>0?text:"Enter something to prview here"}</p>
       
       </div>
     </div>
-  );
+  ); 
 }
