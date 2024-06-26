@@ -1,38 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-    border: "2px black solid",
-  });
 
-  const [btntext, setbtntext] = useState("Enable dark mode");
-  const Changeclr = () => {
-    if (myStyle.color == "black") {
-      console.log("if");
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "2px white solid",
-      });
-      setbtntext("Enable light mode");
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-        border: "2px black solid",
-      });
-      setbtntext("Enable dark mode");
-    }
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  //   border: "2px black solid",
+  // });
+
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "black",
+    backgroundColor: props.mode === "dark" ? "#204a3957" : "white",
+    border: "0.1em solid",
+    borderColor: props.mode === "dark" ? "white" : "black"
   };
 
   return (
-    <div className="container my-3" style={myStyle}>
-      <a className="my-3" to="/about">
+    <div className="container my-3" style={{color: props.mode === "dark" ? "white" : "black"}}>
+      <h1 className="my-3" to="/about">
         About us
-      </a>
+      </h1>
       <div className="accordion accordion-flush" id="accordionFlushExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
@@ -45,7 +32,7 @@ export default function About() {
               aria-controls="flush-collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+              Text analysis techniques
             </button>
           </h2>
           <div
@@ -53,11 +40,11 @@ export default function About() {
             className="accordion-collapse collapse"
             aria-labelledby="flush-headingOne"
             data-bs-parent="#accordionFlushExample"
+            style={myStyle}
           >
             <div className="accordion-body" style={myStyle}>
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> class. This is the
-              first item's accordion body.
+              Text classification. Text classification is a process of assigning
+              tags to unstructured text data. ...
             </div>
           </div>
         </div>
@@ -72,7 +59,7 @@ export default function About() {
               aria-controls="flush-collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+              Text a uppercase technique
             </button>
           </h2>
           <div
@@ -82,10 +69,10 @@ export default function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body" style={myStyle}>
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> class. This is the
-              second item's accordion body. Let's imagine this being filled with
-              some actual content.
+              To make text uppercase on a computer, you can use the "Caps Lock"
+              key to enable uppercase mode temporarily, or you can select the
+              text and apply the "Uppercase" formatting option available in most
+              word processing software.
             </div>
           </div>
         </div>
@@ -100,7 +87,7 @@ export default function About() {
               aria-controls="flush-collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              Text lowercase technique
             </button>
           </h2>
           <div
@@ -110,24 +97,12 @@ export default function About() {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body" style={myStyle}>
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> class. This is the
-              third item's accordion body. Nothing more exciting happening here
-              in terms of content, but just filling up the space to make it
-              look, at least at first glance, a bit more representative of how
-              this would look in a real-world application.
+              To use a keyboard shortcut to change between lowercase, UPPERCASE,
+              and Capitalize Each Word, select the text and press SHIFT + F3
+              until the case you want is applied.
             </div>
           </div>
         </div>
-      </div>
-      <div className="container">
-        <button
-          type="button"
-          className="btn btn-primary my-3"
-          onClick={Changeclr}
-        >
-          {btntext}
-        </button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+
 export default function Navbar(props) {
   return (
     <>
@@ -26,15 +27,19 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
+              <Link className="nav-link" to="/">Home <span className="sr-only"></span></Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to="/about">About</Link>
+              <Link className="nav-link" to="/about">About</Link>
               </li>
+        
             </ul>
+            <div className="d-flex">
+                <div className="bg-primary rounded mx-2" style={{height:"30px", width:"30px"}}></div>
+                <div className="bg-success rounded mx-2" style={{height:"30px", width:"30px"}}></div>
+              </div>
+
             <div className="form-check form-switch">
               <input
                 className="form-check-input"
@@ -51,6 +56,7 @@ export default function Navbar(props) {
               >
                 {props.textm}
               </label>
+              
             </div>
           </div>
         </div>

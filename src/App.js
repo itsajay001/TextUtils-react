@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
@@ -62,17 +62,18 @@ function App() {
       <div className="container my-3">
      
         
-          <Routes>
-            <Route
-              exact path="/"
-              element={<TextForm showalert={showalert} heading="Enter text" />}
-            />
-            <Route exact path="/about" element={<About />} />
-          </Routes>
+          <Routes> 
+             <Route path="/" element={<TextForm showalert={showalert} heading="Enter text" />} />
+             <Route path="/about" element={ <About mode={mode} />} />
+             
+              
+           
+          
+          </Routes> 
         
         
       </div>
-      </BrowserRouter>
+       </BrowserRouter> 
     </>
   );
 }
